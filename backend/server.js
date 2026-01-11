@@ -1,4 +1,8 @@
 const express = require('express');
+const PORT = process.env.PORT || 5000;
+
+import dotenv from 'dotenv';
+dotenv.config();
 const MongoStore = require('connect-mongo');
 const mongoose = require('mongoose');
 const multer = require('multer');
@@ -9,12 +13,8 @@ const cors = require('cors');
 const session = require('express-session'); // 👈 Added session
 
 const app = express();
-const PORT = process.emv.PORT || 5000;
 
 // MongoDB Connection
-import dotenv from 'dotenv';
-dotenv.config();
-
 mongoose
   .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
