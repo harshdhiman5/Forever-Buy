@@ -1,7 +1,7 @@
 const express = require('express');
 const PORT = process.env.PORT || 5000;
 
-import dotenv from 'dotenv';
+const dotenv = require ('dotenv');
 dotenv.config();
 const MongoStore = require('connect-mongo');
 const mongoose = require('mongoose');
