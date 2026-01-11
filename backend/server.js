@@ -9,11 +9,17 @@ const cors = require('cors');
 const session = require('express-session'); // 👈 Added session
 
 const app = express();
-const PORT = 5000;
+const PORT = process.emv.PORT || 5000;
 
 // MongoDB Connection
+import dotenv from 'dotenv';
+dotenv.config();
+
 mongoose
-  .connect('mongodb://127.0.0.1:27017/forever')
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
   .then(() => {
     console.log("✅ Connected to DB:", mongoose.connection.name);
   })
@@ -23,7 +29,10 @@ mongoose
 
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: process.env.CLIENT_URL || "http://localhost:3000",
+  credentials: true
+}));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
