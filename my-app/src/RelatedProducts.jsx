@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import API_URL from "./config";
 import Card from "./Card";
 
 export default function RelatedProducts() {
