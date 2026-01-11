@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import { useLocation } from "react-router-dom";
+import API_URL from "./config";
 
 export default function Collection() {
     const [products, setProducts] = useState([]);
@@ -19,7 +20,7 @@ export default function Collection() {
 
     // Fetch all products and apply search filter+
     useEffect(() => {
-        fetch("http://localhost:5000/api/products")
+        fetch(`${API_URL}/api/products`)
             .then((res) => res.json())
             .then((data) => {
                 setProducts(data);

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import API_URL from "./config";
 
 export default function Card(props) {
     return (
@@ -10,7 +11,7 @@ export default function Card(props) {
                         <Link to={`/product/${item._id}`} className="text-decoration-none text-dark">
                             <div className="card-img custom-card rounded-0">
                                 <img
-                                    src={`http://localhost:5000/${item.image}`}
+                                    src={`${API_URL}/${item.image}`}
                                     className="img-fluid card-image-hover"
                                     alt={item.title}
                                 />

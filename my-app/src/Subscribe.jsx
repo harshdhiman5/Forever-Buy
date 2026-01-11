@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Subscribee() {
+export default function Subscribe() {
     return (
         <>
             <div className="container mt-5">

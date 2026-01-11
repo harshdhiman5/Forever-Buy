@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import API_URL from "./config";
 import { useParams } from "react-router-dom";
 import RelatedProducts from "./RelatedProducts";
 
@@ -8,7 +9,7 @@ export default function ProductDetails() {
   const [selectedSize, setSelectedSize] = useState(""); // State to track selected size
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/products/${id}`)
+    fetch(`${API_URL}/api/products/${id}`)
       .then((res) => res.json())
       .then((data) => setProduct(data))
       .catch((err) => console.error("Error fetching product details:", err));
@@ -44,7 +45,7 @@ export default function ProductDetails() {
       <div className="row">
         <div className="col-lg-6">
           <img
-            src={`http://localhost:5000/${product.image}`}
+            src={`${API_URL}/${product.image}`}
             alt={product.title}
             className="img-fluid"
           />

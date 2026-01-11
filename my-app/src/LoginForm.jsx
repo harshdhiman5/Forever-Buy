@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import API_URL from "./config"
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({
@@ -18,17 +19,18 @@ const LoginForm = () => {
 
     try {
       // Send login details to backend
-      const response = await fetch('http://localhost:5000/login', {
+      const response = await fetch(`${API_URL}/login`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json'
         },
+        credentials: "include", //Important for Sessions
         body: JSON.stringify(formData)
       });
 
       if (response.ok) {
         // ✅ Login success: Redirect to manage-product page
-        window.location.href = "http://localhost:5000/manage-product";
+        window.location.href = `${API_URL}/manage-product`;
       } else {
         // ❌ Login failed
         const result = await response.json();
